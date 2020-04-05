@@ -74,7 +74,7 @@ public class SliderHorizontalScrollView extends HorizontalScrollView {
                 break;
             case MotionEvent.ACTION_UP:
                 
-                // if slided lager than 1/6 screen width, then slide to next page, or else slide back
+                // if slided distance lager than 1/6 screen width, then slide to next page, or else slide back
             case MotionEvent.ACTION_CANCEL: {
                 if (Math.abs((ev.getX() - downX)) > getWidth() / 6) {
                     if (ev.getX() - downX > 0) {
