@@ -16,10 +16,10 @@ public class SliderHorizontalScrollView extends HorizontalScrollView {
 
 
     private int subChildCount = 0;
-    private ViewGroup firstChild = null;
-    private int downX = 0;
-    private int currentPage = 0;
-    private ArrayList<Integer> viewList = new ArrayList<Integer>();
+    private ViewGroup firstChild = null;  
+    private int downX = 0; 
+    private int currentPage = 0; 
+    private ArrayList<Integer> viewList = new ArrayList<Integer>(); 
 
 
     public SliderHorizontalScrollView(Context context, AttributeSet attrs,
@@ -73,6 +73,8 @@ public class SliderHorizontalScrollView extends HorizontalScrollView {
             case MotionEvent.ACTION_MOVE:
                 break;
             case MotionEvent.ACTION_UP:
+                
+                // if slided lager than 1/6 screen width, then slide to next page, or else slide back
             case MotionEvent.ACTION_CANCEL: {
                 if (Math.abs((ev.getX() - downX)) > getWidth() / 6) {
                     if (ev.getX() - downX > 0) {
@@ -115,6 +117,7 @@ public class SliderHorizontalScrollView extends HorizontalScrollView {
         }
     }
 
+    // used for page changing call back
     public interface PageIndexChangeListener {
 
         void OnPageChange(int index);
@@ -136,8 +139,8 @@ public class SliderHorizontalScrollView extends HorizontalScrollView {
         smoothScrollToPrePage();
     }
 
-
-    public boolean gotoPage(int page) {
+    
+    public boolean goToPage(int page) {
         if (page >= 0 && page <= subChildCount - 1) {
             smoothScrollTo(viewList.get(page), 0);
             if(pageIndexChangeListener!=null){
